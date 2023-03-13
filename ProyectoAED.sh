@@ -16,6 +16,13 @@ tradicionales(){
 	echo "3. Modelo V\n"
 }
 
+msecciones(){
+	echo "1. Agregar información"
+	echo "2. Buscar"
+	echo "3. Eliminar información"
+	echo "4. Leer base de información"
+}
+
 if [ $# != 1 ]; then
 	echo "Uso: $0 [ -a | -t ]"
 	echo "-a | Metodologías ágiles"
@@ -25,7 +32,24 @@ fi
 
 if [ "$1" = "-a" ]; then
 	agiles
-	
+	read opcion
+	if [ $opcion = 1 ]; then
+		echo "\nUsted esta en la sección SCRUM, seleccione la opción que desea utilizar.\n"
+		msecciones
+	elif [ $opcion = 2 ]; then
+		echo "\nUsted esta en la sección X.P., seleccione la opción que desea utilizar.\n"
+		msecciones
+	elif [ $opcion = 3 ]; then
+		echo "\nUsted esta en la sección Kanban., seleccione la opción que desea utilizar.\n"
+		msecciones
+	elif [ $opcion = 4 ]; then
+		echo "\nUsted esta en la sección Crystal, seleccione la opción que desea utilizar.\n"
+		msecciones
+	else
+		echo "\nOpción inválida.."
+		agiles
+		exit 1
+	fi
 elif [ "$1" = "-t" ]; then
 	tradicionales
 	
