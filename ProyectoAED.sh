@@ -17,10 +17,19 @@ tradicionales(){
 }
 
 msecciones(){
-	echo "1. Agregar información"
+	echo "\n1. Agregar información"
 	echo "2. Buscar"
 	echo "3. Eliminar información"
-	echo "4. Leer base de información"
+	echo "4. Leer base de información\n"
+}
+
+agregar(){
+	echo "Ingrese un identificador para la definición:"
+	read id
+	echo "Ingrese una definición para la deficinón:"
+	read def 
+	echo "[$id] .- $def" >> $1.inf
+	echo "Agregando: [$id] .- $def"
 }
 
 if [ $# != 1 ]; then
@@ -37,20 +46,48 @@ if [ "$1" = "-a" ]; then
 		read opcion
 		if [ $opcion = 1 ]; then
 			echo "\nUsted esta en la sección SCRUM, seleccione la opción que desea utilizar.\n"
+			while true
+			do
+				msecciones
+				read msec
+				if [ $msec = 1 ]; then
+					agregar "SCRUM"
+				fi
+			done
 			break
-			msecciones
 		elif [ $opcion = 2 ]; then
 			echo "\nUsted esta en la sección X.P., seleccione la opción que desea utilizar.\n"
+			while true
+			do
+				msecciones
+				read msec
+				if [ $msec = 1 ]; then
+					agregar "XP"
+				fi
+			done
 			break
-			msecciones
 		elif [ $opcion = 3 ]; then
 			echo "\nUsted esta en la sección Kanban, seleccione la opción que desea utilizar.\n"
+			while true
+			do
+				msecciones
+				read msec
+				if [ $msec = 1 ]; then
+					agregar "Kanban"
+				fi
+			done
 			break
-			msecciones
 		elif [ $opcion = 4 ]; then
 			echo "\nUsted esta en la sección Crystal, seleccione la opción que desea utilizar.\n"
+			while true
+			do
+				msecciones
+				read msec
+				if [ $msec = 1 ]; then
+					agregar "Crystal"
+				fi
+			done
 			break
-			msecciones
 		else
 			echo "\nOpción inválida.."
 			agiles
@@ -63,16 +100,37 @@ elif [ "$1" = "-t" ]; then
 		read opcion
 		if [ $opcion = 1 ]; then
 			echo "\nUsted esta en la sección Cascada, seleccione la opción que desea utilizar.\n"
+			while true
+			do
+				msecciones
+				read msec
+				if [ $msec = 1 ]; then
+					agregar "Cascada"
+				fi
+			done
 			break
-			msecciones
 		elif [ $opcion = 2 ]; then
 			echo "\nUsted esta en la sección Espiral, seleccione la opción que desea utilizar.\n"
+			while true
+			do
+				msecciones
+				read msec
+				if [ $msec = 1 ]; then
+					agregar "Espiral"
+				fi
+			done
 			break
-			msecciones
 		elif [ $opcion = 3 ]; then
 			echo "\nUsted esta en la sección Modelo, seleccione la opción que desea utilizar.\n"
+			while true
+			do
+				msecciones
+				read msec
+				if [ $msec = 1 ]; then
+					agregar "Modelo"
+				fi
+			done
 			break
-			msecciones
 		else
 			echo "\nOpción inválida.."
 			tradicionales
