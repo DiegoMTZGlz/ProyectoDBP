@@ -44,7 +44,7 @@ if [ "$1" = "-a" ]; then
 			break
 			msecciones
 		elif [ $opcion = 3 ]; then
-			echo "\nUsted esta en la sección Kanban., seleccione la opción que desea utilizar.\n"
+			echo "\nUsted esta en la sección Kanban, seleccione la opción que desea utilizar.\n"
 			break
 			msecciones
 		elif [ $opcion = 4 ]; then
@@ -57,7 +57,27 @@ if [ "$1" = "-a" ]; then
 		fi
 	done	
 elif [ "$1" = "-t" ]; then
-	tradicionales
+	while true
+	do
+		tradicionales
+		read opcion
+		if [ $opcion = 1 ]; then
+			echo "\nUsted esta en la sección Cascada, seleccione la opción que desea utilizar.\n"
+			break
+			msecciones
+		elif [ $opcion = 2 ]; then
+			echo "\nUsted esta en la sección Espiral, seleccione la opción que desea utilizar.\n"
+			break
+			msecciones
+		elif [ $opcion = 3 ]; then
+			echo "\nUsted esta en la sección Modelo, seleccione la opción que desea utilizar.\n"
+			break
+			msecciones
+		else
+			echo "\nOpción inválida.."
+			tradicionales
+		fi
+	done
 	
 else
 	echo "Uso: $0 [ -a | -t ]"
