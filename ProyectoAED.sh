@@ -31,25 +31,31 @@ if [ $# != 1 ]; then
 fi
 
 if [ "$1" = "-a" ]; then
-	agiles
-	read opcion
-	if [ $opcion = 1 ]; then
-		echo "\nUsted esta en la sección SCRUM, seleccione la opción que desea utilizar.\n"
-		msecciones
-	elif [ $opcion = 2 ]; then
-		echo "\nUsted esta en la sección X.P., seleccione la opción que desea utilizar.\n"
-		msecciones
-	elif [ $opcion = 3 ]; then
-		echo "\nUsted esta en la sección Kanban., seleccione la opción que desea utilizar.\n"
-		msecciones
-	elif [ $opcion = 4 ]; then
-		echo "\nUsted esta en la sección Crystal, seleccione la opción que desea utilizar.\n"
-		msecciones
-	else
-		echo "\nOpción inválida.."
+	while true
+	do
 		agiles
-		exit 1
-	fi
+		read opcion
+		if [ $opcion = 1 ]; then
+			echo "\nUsted esta en la sección SCRUM, seleccione la opción que desea utilizar.\n"
+			break
+			msecciones
+		elif [ $opcion = 2 ]; then
+			echo "\nUsted esta en la sección X.P., seleccione la opción que desea utilizar.\n"
+			break
+			msecciones
+		elif [ $opcion = 3 ]; then
+			echo "\nUsted esta en la sección Kanban., seleccione la opción que desea utilizar.\n"
+			break
+			msecciones
+		elif [ $opcion = 4 ]; then
+			echo "\nUsted esta en la sección Crystal, seleccione la opción que desea utilizar.\n"
+			break
+			msecciones
+		else
+			echo "\nOpción inválida.."
+			agiles
+		fi
+	done	
 elif [ "$1" = "-t" ]; then
 	tradicionales
 	
