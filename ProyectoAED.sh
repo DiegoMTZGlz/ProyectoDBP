@@ -15,51 +15,24 @@ magiles(){
 		read opcion
 		case $opcion in
 			1)
-			echo "\nUsted esta en la sección SCRUM, seleccione la opción que desea utilizar.\n"
-			while true
-			do
-				msecciones
-				read msec
-				if [ $msec = 1 ]; then
-					agregar "SCRUM"
-				fi
-			done
+			sec="SCRUM"
+			macciones $sec
+
 			break
 			;;
 			2)
-			echo "\nUsted esta en la sección X.P., seleccione la opción que desea utilizar.\n"
-			while true
-			do
-				msecciones
-				read msec
-				if [ $msec = 1 ]; then
-					agregar "XP"
-				fi
-			done
+			sec="XP"
+			macciones $sec
 			break
 			;;
 			3)
-			echo "\nUsted esta en la sección Kanban, seleccione la opción que desea utilizar.\n"
-			while true
-			do
-				msecciones
-				read msec
-				if [ $msec = 1 ]; then
-					agregar "Kanban"
-				fi
-			done
+			sec="Kanban"
+			macciones $sec
 			break
 			;;
 			4)
-			echo "\nUsted esta en la sección Crystal, seleccione la opción que desea utilizar.\n"
-			while true
-			do
-				msecciones
-				read msec
-				if [ $msec = 1 ]; then
-					agregar "Crystal"
-				fi
-			done
+			sec="Crystal"
+			macciones $sec
 			break
 			;;
 			*)
@@ -85,39 +58,18 @@ mtradicionales(){
 		read opcion
 		case $opcion in
 			1)
-			echo "\nUsted esta en la sección Cascada, seleccione la opción que desea utilizar.\n"
-			while true
-			do
-				msecciones
-				read msec
-				if [ $msec = 1 ]; then
-					agregar "Cascada"
-				fi
-			done
+			sec="Cascada"
+			macciones $sec
 			break
 			;;
 			2)
-			echo "\nUsted esta en la sección Espiral, seleccione la opción que desea utilizar.\n"
-			while true
-			do
-				msecciones
-				read msec
-				if [ $msec = 1 ]; then
-					agregar "Espiral"
-				fi
-			done
+			sec="Espiral"
+			macciones $sec
 			break
 			;;
 			3)
-			echo "\nUsted esta en la sección Modelo, seleccione la opción que desea utilizar.\n"
-			while true
-			do
-				msecciones
-				read msec
-				if [ $msec = 1 ]; then
-					agregar "Modelo"
-				fi
-			done
+			sec="Modelo"
+			macciones $sec
 			break
 			;;
 			*)
@@ -138,10 +90,35 @@ msecciones(){
 agregar(){
 	echo "Ingrese un identificador para la definición:"
 	read id
-	echo "Ingrese una definición para la deficinón:"
+	echo "Ingrese una definición:"
 	read def 
 	echo "[$id] .- $def" >> $1.inf
 	echo "Agregando: [$id] .- $def"
+}
+
+buscar(){
+	echo "Ingrese un identificador para la búsqueda:"
+	read id
+	grep -i -n $id ./$1.inf
+}
+
+macciones(){
+	while true
+			do
+			echo "\nUsted esta en la sección $sec, seleccione la opción que desea utilizar."
+				msecciones
+				read msec
+				case $msec in
+					1)
+					agregar $sec
+					;;
+					2)
+					buscar $sec
+					;;
+					*)
+					echo "Ingresa una opción válida"
+				esac
+			done
 }
 
 if [ $# != 1 ]; then
