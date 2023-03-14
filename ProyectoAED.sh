@@ -13,7 +13,8 @@ magiles(){
 	do
 		agiles
 		read opcion
-		if [ $opcion = 1 ]; then
+		case $opcion in
+			1)
 			echo "\nUsted esta en la sección SCRUM, seleccione la opción que desea utilizar.\n"
 			while true
 			do
@@ -24,7 +25,8 @@ magiles(){
 				fi
 			done
 			break
-		elif [ $opcion = 2 ]; then
+			;;
+			2)
 			echo "\nUsted esta en la sección X.P., seleccione la opción que desea utilizar.\n"
 			while true
 			do
@@ -35,7 +37,8 @@ magiles(){
 				fi
 			done
 			break
-		elif [ $opcion = 3 ]; then
+			;;
+			3)
 			echo "\nUsted esta en la sección Kanban, seleccione la opción que desea utilizar.\n"
 			while true
 			do
@@ -46,7 +49,8 @@ magiles(){
 				fi
 			done
 			break
-		elif [ $opcion = 4 ]; then
+			;;
+			4)
 			echo "\nUsted esta en la sección Crystal, seleccione la opción que desea utilizar.\n"
 			while true
 			do
@@ -57,10 +61,12 @@ magiles(){
 				fi
 			done
 			break
-		else
+			;;
+			*)
 			echo "\nOpción inválida.."
 			agiles
-		fi
+			;;
+		esac
 	done
 }
 
@@ -77,7 +83,8 @@ mtradicionales(){
 	do
 		tradicionales
 		read opcion
-		if [ $opcion = 1 ]; then
+		case $opcion in
+			1)
 			echo "\nUsted esta en la sección Cascada, seleccione la opción que desea utilizar.\n"
 			while true
 			do
@@ -88,7 +95,8 @@ mtradicionales(){
 				fi
 			done
 			break
-		elif [ $opcion = 2 ]; then
+			;;
+			2)
 			echo "\nUsted esta en la sección Espiral, seleccione la opción que desea utilizar.\n"
 			while true
 			do
@@ -99,7 +107,8 @@ mtradicionales(){
 				fi
 			done
 			break
-		elif [ $opcion = 3 ]; then
+			;;
+			3)
 			echo "\nUsted esta en la sección Modelo, seleccione la opción que desea utilizar.\n"
 			while true
 			do
@@ -110,10 +119,12 @@ mtradicionales(){
 				fi
 			done
 			break
-		else
+			;;
+			*)
 			echo "\nOpción inválida.."
 			tradicionales
-		fi
+			;;
+		esac
 	done
 }
 
