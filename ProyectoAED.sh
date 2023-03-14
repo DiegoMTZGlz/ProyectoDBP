@@ -8,38 +8,7 @@ agiles(){
 	echo "4. Crystal\n"
 }
 
-tradicionales(){
-	echo "\nMetodologías Tradicionales"
-	echo "Para continuar seleccione un tema:"
-	echo "1. Cascada"
-	echo "2. Espiral"
-	echo "3. Modelo V\n"
-}
-
-msecciones(){
-	echo "\n1. Agregar información"
-	echo "2. Buscar"
-	echo "3. Eliminar información"
-	echo "4. Leer base de información\n"
-}
-
-agregar(){
-	echo "Ingrese un identificador para la definición:"
-	read id
-	echo "Ingrese una definición para la deficinón:"
-	read def 
-	echo "[$id] .- $def" >> $1.inf
-	echo "Agregando: [$id] .- $def"
-}
-
-if [ $# != 1 ]; then
-	echo "Uso: $0 [ -a | -t ]"
-	echo "-a | Metodologías ágiles"
-	echo "-t | Metodologías tradicionales"
-	exit 1
-fi
-
-if [ "$1" = "-a" ]; then
+magiles(){
 	while true
 	do
 		agiles
@@ -92,8 +61,18 @@ if [ "$1" = "-a" ]; then
 			echo "\nOpción inválida.."
 			agiles
 		fi
-	done	
-elif [ "$1" = "-t" ]; then
+	done
+}
+
+tradicionales(){
+	echo "\nMetodologías Tradicionales"
+	echo "Para continuar seleccione un tema:"
+	echo "1. Cascada"
+	echo "2. Espiral"
+	echo "3. Modelo V\n"
+}
+
+mtradicionales(){
 	while true
 	do
 		tradicionales
@@ -136,7 +115,35 @@ elif [ "$1" = "-t" ]; then
 			tradicionales
 		fi
 	done
-	
+}
+
+msecciones(){
+	echo "\n1. Agregar información"
+	echo "2. Buscar"
+	echo "3. Eliminar información"
+	echo "4. Leer base de información\n"
+}
+
+agregar(){
+	echo "Ingrese un identificador para la definición:"
+	read id
+	echo "Ingrese una definición para la deficinón:"
+	read def 
+	echo "[$id] .- $def" >> $1.inf
+	echo "Agregando: [$id] .- $def"
+}
+
+if [ $# != 1 ]; then
+	echo "Uso: $0 [ -a | -t ]"
+	echo "-a | Metodologías ágiles"
+	echo "-t | Metodologías tradicionales"
+	exit 1
+fi
+
+if [ "$1" = "-a" ]; then
+	magiles
+elif [ "$1" = "-t" ]; then
+	mtradicionales
 else
 	echo "Uso: $0 [ -a | -t ]"
 	echo "-a | Metodologías ágiles"
