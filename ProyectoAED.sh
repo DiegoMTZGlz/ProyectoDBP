@@ -1,41 +1,35 @@
 #!/bin/bash
 agiles(){
-	echo "\nMetodologías Ágiles"
-	echo "Para continuar seleccione un tema:"
-	echo "1. SCRUM"
-	echo "2. X.P."
-	echo "3. Kanban"
-	echo "4. Crystal"
-	echo "5. Volver al menú anterior"
-	echo "6. Terminar ejecución\n"
+		echo "\n ==== Metodologías Ágiles ===="
+		echo "1. SCRUM"
+		echo "2. X.P."
+		echo "3. Kanban"
+		echo "4. Crystal"
+		echo "5. Volver al menú anterior"
+		echo "6. Terminar ejecución\n"
 }
 
 magiles(){
 	while true
 	do
 		agiles
-		read opcion
+		read -p "Para continuar seleccione un tema: " opcion
 		case $opcion in
 			1)
 			sec="SCRUM"
 			macciones $sec
-
-			break
 			;;
 			2)
 			sec="XP"
 			macciones $sec
-			break
 			;;
 			3)
 			sec="Kanban"
 			macciones $sec
-			break
 			;;
 			4)
 			sec="Crystal"
 			macciones $sec
-			break
 			;;
 			5)
 			break
@@ -52,8 +46,7 @@ magiles(){
 }
 
 tradicionales(){
-	echo "\nMetodologías Tradicionales"
-	echo "Para continuar seleccione un tema:"
+	echo "\n ==== Metodologías Tradicionales ===="
 	echo "1. Cascada"
 	echo "2. Espiral"
 	echo "3. Modelo V"
@@ -65,22 +58,19 @@ mtradicionales(){
 	while true
 	do
 		tradicionales
-		read opcion
+		read -p "Para continuar seleccione un tema: " opcion
 		case $opcion in
 			1)
 			sec="Cascada"
 			macciones $sec
-			break
 			;;
 			2)
 			sec="Espiral"
 			macciones $sec
-			break
 			;;
 			3)
 			sec="Modelo"
 			macciones $sec
-			break
 			;;
 			4)
 			break
@@ -106,43 +96,38 @@ msecciones(){
 }
 
 agregar(){
-	echo "Ingrese un identificador para la definición:"
-	read id
-	echo "Ingrese una definición:"
-	read def 
+	read -p "Ingrese un identificador para la definición: " id
+	read -p "Ingrese una definición: " def 
 	echo "[$id] .- $def" >> $1.inf
-	echo "Agregando: [$id] .- $def"
+	echo "\nAgregando: [$id] .- $def"
 }
 
 buscar(){
-	echo "Ingrese un identificador para la búsqueda:"
-	read id
+	read -p "Ingrese un identificador para la búsqueda: " id
 	grep -i -n $id ./$1.inf
 }
 
 eliminar(){
-	echo "Ingresa el identificador para eliminar la definición:"
-	read id
+	read -p "Ingresa el identificador para eliminar la definición: " id
 	echo "\nEliminando..." 
 	sed -i "/$(echo $id | sed 's/[\/&]/\\&/g' | tr '[:upper:]' '[:lower:]')/Id" $sec.inf
 }
 
 leer(){
-	echo "Contenido del archivo: "
-	cat ./$1.inf
+	echo "\nContenido del archivo: \n"
+	cat ./$sec.inf
 }
 
 salir(){
-	echo "\n==== Terminando ejecución ====\n"
+	echo "\n ==== Terminando ejecución ====\n"
 	exit 1
 }
 
 macciones(){
 	while true
 			do
-			echo "\nUsted esta en la sección $sec, seleccione la opción que desea utilizar."
 				msecciones
-				read msec
+				read -p "Usted está en la sección $sec, seleccione la opción que desea utilizar: " msec
 				case $msec in
 					1)
 					agregar $sec
@@ -154,7 +139,7 @@ macciones(){
 					eliminar $sec
 					;;
 					4)
-					leer $1
+					leer $sec
 					;;
 					5)
 					break
@@ -163,7 +148,7 @@ macciones(){
 					salir
 					;;		
 					*)
-					echo "Ingresa una opción válida"
+					echo "\nIngresa una opción válida"
 				esac
 			done
 }
@@ -171,15 +156,18 @@ macciones(){
 while true
 do
 	echo "\n-a | Metodologías ágiles"
-	echo "-t | Metodologías tradicionales\n"
-	echo "Ingresa la opción deseada: "
-	read in
+	echo "-t | Metodologías tradicionales"
+	echo "-f | Terminar ejecución\n"
+	read -p "Ingresa la opción deseada: " in
 	case "$in" in
 		"-a")
 		magiles
 		;;
 		"-t")
 		mtradicionales
+		;;
+		"-f")
+		exit 1
 		;;
 		*)
 		echo "\nOpción inválida, usa:"
