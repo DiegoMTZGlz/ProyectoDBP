@@ -15,6 +15,10 @@ Terminal
 ```
 $sh ProyectoAED.sh
 ```
+o para ejecutar la imagen de docker
+```
+$docker run -ti diegomtzglz/proyectodbp
+```
 
 ## Hecho con:
 
@@ -33,4 +37,4 @@ $sh ProyectoAED.sh
 * **GitHub** - (https://github.com/DiegoMTZGlz/ProyectoDBP)
 * **GitLab**  (https://gitlab.com/DiegoMTZGlz/proyectodbp)
 * **BitBucket** (https://bitbucket.org/dbpmtz/proyectodbp/src/master/)
-* **DockerHub** (https://hub.docker.com/repository/docker/diegomtzglz/proyectodbp/general)
+* **DockerHub** (https://hub.docker.com/r/diegomtzglz/proyectodbp)
