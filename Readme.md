@@ -1,3 +1,27 @@
+# Proyecto DBP Script BASH
+
+Proyecto basado en un script programado en BASH para agregar, buscar, eliminar y leer información acerca de diversas metodologías predeterminadas.
+
+## Empezando
+
+Éstas instrucciones son para la ejecución correcta del Script
+
+### Prerequsítos
+
+Terminal
+
+## Ejecución
+
+```
+$sh ProyectoAED.sh
+```
+
+## Hecho con:
+
+* [bash](https://www.gnu.org/software/bash/) - Usado para programar el script.
+* [git](http://www.dropwizard.io/1.0.2/docs/) - Usado para subir el proyecto a repositorios.
+* [docker](https://www.docker.com/) - Usado para crear la imagen ejecutable.
+
 ## Integrantes
 
 * **Diego Martínez - 353198** - [DiegoMTZGlz](https://github.com/DiegoMTZGlz)
