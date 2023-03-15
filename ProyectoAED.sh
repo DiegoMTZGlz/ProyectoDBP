@@ -127,6 +127,11 @@ eliminar(){
 	sed -i "/$(echo $id | sed 's/[\/&]/\\&/g' | tr '[:upper:]' '[:lower:]')/Id" $sec.inf
 }
 
+leer(){
+	echo "Contenido del archivo: "
+	cat ./$1.inf
+}
+
 salir(){
 	echo "\n==== Terminando ejecución ====\n"
 	exit 1
@@ -149,7 +154,7 @@ macciones(){
 					eliminar $sec
 					;;
 					4)
-					leer $sec
+					leer $1
 					;;
 					5)
 					break
