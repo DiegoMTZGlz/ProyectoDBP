@@ -5,7 +5,9 @@ agiles(){
 	echo "1. SCRUM"
 	echo "2. X.P."
 	echo "3. Kanban"
-	echo "4. Crystal\n"
+	echo "4. Crystal"
+	echo "5. Volver al menú anterior"
+	echo "6. Terminar ejecución\n"
 }
 
 magiles(){
@@ -35,6 +37,12 @@ magiles(){
 			macciones $sec
 			break
 			;;
+			5)
+			break
+			;;
+			6)
+			salir
+			;;
 			*)
 			echo "\nOpción inválida.."
 			agiles
@@ -48,7 +56,9 @@ tradicionales(){
 	echo "Para continuar seleccione un tema:"
 	echo "1. Cascada"
 	echo "2. Espiral"
-	echo "3. Modelo V\n"
+	echo "3. Modelo V"
+	echo "4. Volver al menú anterior"
+	echo "5. Terminar ejecución\n"
 }
 
 mtradicionales(){
@@ -72,6 +82,12 @@ mtradicionales(){
 			macciones $sec
 			break
 			;;
+			4)
+			break
+			;;
+			5)
+			salir
+			;;
 			*)
 			echo "\nOpción inválida.."
 			tradicionales
@@ -84,7 +100,9 @@ msecciones(){
 	echo "\n1. Agregar información"
 	echo "2. Buscar"
 	echo "3. Eliminar información"
-	echo "4. Leer base de información\n"
+	echo "4. Leer base de información"
+	echo "5. Volver al menú anterior"
+	echo "6. Terminar ejecución\n"
 }
 
 agregar(){
@@ -102,6 +120,18 @@ buscar(){
 	grep -i -n $id ./$1.inf
 }
 
+eliminar(){
+	echo "Ingresa el identificador para eliminar la definición:"
+	read id
+	echo "\nEliminando..." 
+	sed -i "/$(echo $id | sed 's/[\/&]/\\&/g' | tr '[:upper:]' '[:lower:]')/Id" $sec.inf
+}
+
+salir(){
+	echo "\n==== Terminando ejecución ====\n"
+	exit 1
+}
+
 macciones(){
 	while true
 			do
@@ -115,26 +145,38 @@ macciones(){
 					2)
 					buscar $sec
 					;;
+					3)
+					eliminar $sec
+					;;
+					4)
+					leer $sec
+					;;
+					5)
+					break
+					;;
+					6)
+					salir
+					;;		
 					*)
 					echo "Ingresa una opción válida"
 				esac
 			done
 }
-
-if [ $# != 1 ]; then
-	echo "Uso: $0 [ -a | -t ]"
-	echo "-a | Metodologías ágiles"
-	echo "-t | Metodologías tradicionales"
-	exit 1
-fi
-
-if [ "$1" = "-a" ]; then
-	magiles
-elif [ "$1" = "-t" ]; then
-	mtradicionales
-else
-	echo "Uso: $0 [ -a | -t ]"
-	echo "-a | Metodologías ágiles"
-	echo "-t | Metodologías tradicionales"
-	exit 1
-fi
+	
+while true
+do
+	echo "\n-a | Metodologías ágiles"
+	echo "-t | Metodologías tradicionales\n"
+	echo "Ingresa la opción deseada: "
+	read in
+	case "$in" in
+		"-a")
+		magiles
+		;;
+		"-t")
+		mtradicionales
+		;;
+		*)
+		echo "\nOpción inválida, usa:"
+	esac
+done
